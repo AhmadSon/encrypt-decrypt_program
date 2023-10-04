@@ -28,10 +28,35 @@
 - [Selesai](#terimakasih)
 
 
+<br>
 ##  Penjelasan Program halaman encrypt
 Program PHP ini merupakan implementasi dari sistem enkripsi Polyalphabetic Cipher. Berikut penjelasan cara kerja program dan komponen-komponennya:
 
 1. <b>HTML Form</b>: Program dimulai dengan HTML Form yang memungkinkan pengguna memasukkan teks biasa dan tiga kunci enkripsi berbeda (Kunci 1, Kunci 2, dan Kunci 3). Pengguna dapat mengirimkan formulir untuk mengenkripsi teks biasa menggunakan kunci ini.
+```html
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Plain text</label>
+                <textarea class="form-control" required="required" name="plaintext" id="exampleFormControlTextarea1" rows="3" placeholder="Enter plain text"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Key 1</label>
+                <input type="text" class="form-control" required="required" name="keytext1" id="keytext1" aria-describedby="emailHelp" placeholder="Enter key text">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Key 2</label>
+                <input type="text" class="form-control" required="required" name="keytext2" id="keytext2" aria-describedby="emailHelp" placeholder="Enter key text">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Key 3</label>
+                <input type="text" class="form-control" required="required" name="keytext3" id="keytext3" aria-describedby="emailHelp" placeholder="Enter key text">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" name="submit" value="Encrypt" class="btn btn-info">
+            </div>
+        </form>}
+```
 
 2. <b>PHP Processing</b>: Saat pengguna mengirimkan formulir, skrip PHP di bagian atas file memproses input. Ia memeriksa apakah formulir telah dikirimkan (menggunakan `isset($_POST["submit"])`) dan kemudian mengambil teks biasa dan tiga kunci enkripsi dari input formulir.
 
