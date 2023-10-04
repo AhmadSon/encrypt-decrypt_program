@@ -27,10 +27,11 @@
 - [Penjelasan Program halaman decrypt](#penjelasan-program-halaman-decrypt)
 - [Selesai](#terimakasih)
 
-
 <br>
+
 ##  Penjelasan Program halaman encrypt
 Program PHP ini merupakan implementasi dari sistem enkripsi Polyalphabetic Cipher. Berikut penjelasan cara kerja program dan komponen-komponennya:
+<br>
 
 1. <b>HTML Form</b>: Program dimulai dengan HTML Form yang memungkinkan pengguna memasukkan teks biasa dan tiga kunci enkripsi berbeda (Kunci 1, Kunci 2, dan Kunci 3). Pengguna dapat mengirimkan formulir untuk mengenkripsi teks biasa menggunakan kunci ini.
 ```html
@@ -57,8 +58,25 @@ Program PHP ini merupakan implementasi dari sistem enkripsi Polyalphabetic Ciphe
             </div>
         </form>}
 ```
+<br>
 
 2. <b>PHP Processing</b>: Saat pengguna mengirimkan formulir, skrip PHP di bagian atas file memproses input. Ia memeriksa apakah formulir telah dikirimkan (menggunakan `isset($_POST["submit"])`) dan kemudian mengambil teks biasa dan tiga kunci enkripsi dari input formulir.
+```php
+if (isset($_POST["submit"])) {
+    $str = $_POST["plaintext"];
+    $key1 = $_POST["keytext1"];
+    $key2 = $_POST["keytext2"];
+    $key3 = $_POST["keytext3"];
+
+    $cod1 = encipher($str, $key1, true);
+    $cod2 = encipher($str, $key2, true);
+    $cod3 = encipher($str, $key3, true);
+
+    // Use the last encryption result
+    $result = $cod3;
+}
+```
+<br>
 
 3. <b>Encryption Function (`encipher`)</b>: Inti dari proses enkripsi adalah fungsi `encipher`. Fungsi ini menggunakan teks biasa, kunci, dan tanda (`$is_encode`) sebagai parameter. Ia melakukan operasi enkripsi.
 
@@ -66,14 +84,94 @@ Program PHP ini merupakan implementasi dari sistem enkripsi Polyalphabetic Ciphe
    - Kemudian melakukan iterasi melalui teks biasa, menghapus karakter non-huruf dan menyimpan hasilnya dalam variabel `$dest`.
    - Untuk setiap huruf dalam teks biasa yang dibersihkan, ini menghitung huruf yang sesuai dalam teks tersandi berdasarkan kunci dan apakah itu encoding atau decoding.
    - Huruf ciphertext yang dihitung ditambahkan ke variabel `$dest`.
+```php
+function encipher($src, $key, $is_encode)
+{
+    $key = strtoupper($key);
+    $src = strtoupper($src);
+    $dest = '';
+
+    /* strip out non-letters */
+    for ($i = 0; $i < strlen($src); $i++) {
+        $char = substr($src, $i, 1);
+        if (ctype_upper($char)) {
+            $dest .= $char;
+        }
+    }
+
+    for ($i = 0; $i < strlen($dest); $i++) {
+        $char = substr($dest, $i, 1);
+        if (!ctype_upper($char)) {
+            continue;
+        }
+        $dest = substr_replace(
+            $dest,
+            chr(
+                ord('A') +
+                    ($is_encode
+                        ? (ord($char) - ord('A') + ord($key[$i % strlen($key)]) - ord('A')) % 26
+                        : (ord($char) - ord('A') - (ord($key[$i % strlen($key)]) - ord('A')) + 26) % 26
+                    )
+            ),
+            $i,
+            1
+        );
+    }
+
+    return $dest;
+}
+
+```
+<br>
 
 4. <b>Encryption Process</b>: Program memanggil fungsi `encipher` tiga kali, masing-masing dengan kunci enkripsi berbeda. Ini menyimpan hasil dalam variabel `$cod1`, `$cod2`, dan `$cod3`. Hasil enkripsi akhir disimpan dalam variabel `$result`, yang menyimpan hasil enkripsi ketiga.
+```php
+if (isset($_POST["submit"])) {
+    $str = $_POST["plaintext"];
+    $key1 = $_POST["keytext1"];
+    $key2 = $_POST["keytext2"];
+    $key3 = $_POST["keytext3"];
+
+    $cod1 = encipher($str, $key1, true);
+    $cod2 = encipher($str, $key2, true);
+    $cod3 = encipher($str, $key3, true);
+
+    // Use the last encryption result
+    $result = $cod3;
+}
+
+```
+<br>
 
 5. <b>Output HTML</b>: Program menampilkan hasil enkripsi dalam kartu di dalam halaman HTML. Ini menunjukkan teks biasa asli, tiga kunci enkripsi yang digunakan, dan teks terenkripsi.
+```php
+        <div class="card text-center">
+            <div class="card-header">
+                Encryption Results
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <?php
+                    if (isset($result)) {
+                        echo "Plain Text: <b>" . $_POST["plaintext"] . "</b><br>";
+                        echo "Key 1: <b>" . $_POST["keytext1"] . "</b><br>";
+                        echo "Key 2: <b>" . $_POST["keytext2"] . "</b><br>";
+                        echo "Key 3: <b>" . $_POST["keytext3"] . "</b><br>";
+                        echo "Encrypted Text: <b>" . $result . "</b><br>";
+                    }
+                    ?>
+                </p>
+            </div>
+            <div class="card-footer text-muted">
+                Coded with <span style="color: dark;"> <i class="fa fa-krw"></i> </span> by Ahsyura
+            </div>
+        </div>
+
+```
 
 
 Singkatnya, program ini memungkinkan pengguna untuk mengenkripsi sepotong teks dengan tiga kunci berbeda, dan menampilkan hasil enkripsi. Logika enkripsi inti diimplementasikan dalam fungsi `encipher`, yang memproses teks masukan dan kunci untuk menghasilkan teks terenkripsi.
-
+<br>
 
 
 ##  Penjelasan Program halaman decrypt
