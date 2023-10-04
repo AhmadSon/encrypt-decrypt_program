@@ -1,4 +1,3 @@
-# Kelompok
 <body>
     <table border="1">
         <tr>
@@ -16,14 +15,14 @@
     </table>
 </body>
  
-## Mengenal polyalphabetic cipher
-<p>polyalphabetic cipher (Penyandian polialfabetik) adalah sebuah berbagai jenis penyandian yang berdasarkan pada metode substitusi, dengan menggunakan beberapa huruf subtitusi. Penyandian Vigenère dapat dikatakan sebagai salah satu penyandian polialfabetik yang paling dikenal, meskipun berupa penyandian sederhana. Mesin Enigma melakukan penyandian secara lebih kompleks. Tetapi, secara konsep masih merupakan penyandian substitusi polialfabetik.</p>
+## Mengenal Metode polyalphabetic cipher
+<p>Metode polyalphabetic cipher (Penyandian polialfabetik) adalah sebuah berbagai jenis penyandian yang berdasarkan pada metode substitusi, dengan menggunakan beberapa huruf subtitusi. Penyandian Vigenère dapat dikatakan sebagai salah satu penyandian polialfabetik yang paling dikenal, meskipun berupa penyandian sederhana. Mesin Enigma melakukan penyandian secara lebih kompleks. Tetapi, secara konsep masih merupakan penyandian substitusi polialfabetik.</p>
 
 # Daftar Isi
 
-- [Mengenal polyalphabetic cipher](#mengenal-polyalphabetic-cipher)
+- [Mengenal Metode polyalphabetic cipher](#mengenal-metode-polyalphabetic-cipher)
 - [Daftar Isi](#daftar-isi)
-- [Penjelasan Program halaman encryp](#penjelasan-program-halaman-encrypt)
+- [Penjelasan Program halaman encrypt](#penjelasan-program-halaman-encrypt)
 - [Penjelasan Program halaman decrypt](#penjelasan-program-halaman-decrypt)
 - [Selesai](#terimakasih)
 
