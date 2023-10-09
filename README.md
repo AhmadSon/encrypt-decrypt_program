@@ -24,6 +24,7 @@
 - [Daftar Isi](#daftar-isi)
 - [Penjelasan Program halaman encrypt](#penjelasan-program-halaman-encrypt)
 - [Penjelasan Program halaman decrypt](#penjelasan-program-halaman-decrypt)
+- [Tampilan Run Program](#tampilan-run-program)
 - [Selesai](#terimakasih)
 
 <br>
