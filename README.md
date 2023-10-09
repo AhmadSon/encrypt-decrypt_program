@@ -317,6 +317,10 @@ if (isset($_POST["submit"])) {
 Singkatnya, program ini memungkinkan pengguna untuk mendekripsi teks terenkripsi sebelumnya menggunakan tiga kunci dekripsi berbeda. Logika dekripsi inti diimplementasikan dalam fungsi `encipher`, yang memproses masukan teks dan kunci terenkripsi untuk menghasilkan teks biasa yang didekripsi.
 <br>
 
+## Tampilan Run Program
+![Gambar 01](asset/encrypt.png)
+![Gambar 02](asset/decrypt.png)
+
 # TERIMAKASIH
 Itu saja dari penjelasan kami. Untuk ke atas silahkan naik rocket ini:<P>
 [![](asset/giphy.gif)](#daftar-isi)
